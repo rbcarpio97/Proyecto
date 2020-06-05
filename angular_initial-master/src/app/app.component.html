@@ -1,0 +1,56 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+  <img src="assets/Imagen/Logo.png" alt="...">
+
+  <div class="chart-wrapper">
+    <div style="text-align:center">
+<h5>
+  LAS MAS VISTAS 2020
+</h5>
+    </div>
+  <canvas
+
+          baseChart #baseChart="base-chart"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          [plugins]="lineChartPlugins">
+  </canvas>
+</div>
+<br/>
+    <div>
+      <form id="f01" [formGroup]="formGroup">
+        <label>nombre:</label>
+        <input type="text" formControlName="nombre"/>
+        <label>apellido:</label>
+        <input type="text" formControlName="apellido"/>
+        <label>edad:</label>
+        <input type="text" formControlName="edad"/>
+        <button (click)="agregarAVector()">
+          Suscribir
+        </button>
+      </form>
+      <table class="table" style="border: 1px solid black;">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Nombre</th>
+          <th>Edad</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr *ngFor="let data of dataListSubject|async">
+          <td>{{ data.id }}</td>
+          <td>{{ data.nombre }}</td>
+          <td>{{ data.edad }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <router-outlet></router-outlet>
+
